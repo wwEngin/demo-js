@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script>
+			function getBeforeDate(n) {
+	var n = n;
+	var d = new Date();
+	var year = d.getFullYear();
+	var mon = d.getMonth() + 1;
+	var day = d.getDate();
+	if(day <= n) {
+		if(mon > 1) {
+			mon = mon - 1;
+		} else {
+			year = year - 1;
+			mon = 12;
+		}
+	}
+	d.setDate(d.getDate() - n);
+	year = d.getFullYear();
+	mon = d.getMonth() + 1;
+	day = d.getDate();
+	s = year + "-" + (mon < 10 ? ('0' + mon) : mon) + "-" + (day < 10 ? ('0' + day) : day);
+	return s;
+}
+console.log(getBeforeDate(0)); //昨天的日期
+console.log(getBeforeDate(10)); //前七天的日期
+
+var beforeDate, d, t, t2
+
+function getBeforeDay(n) {
+	t = new Date().getTime()
+	t2 = n * 1000 * 3600 * 24
+	t -= t2
+	d = new Date(t)
+	beforeDate = d.getUTCFullYear() + '-'
+	beforeDate += ('00' + (d.getUTCMonth() + 1)).slice(-2) + '-'
+	beforeDate += ('00' + d.getUTCDate()).slice(-2)
+	return beforeDate
+}
+getBeforeDay(180)
+console.log(getBeforeDay(7))</script>
+	</body>
+
+</html>

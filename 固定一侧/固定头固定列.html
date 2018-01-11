@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+		<script src="iscroll.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			/*固定头和列的样式，加背景，不然背景透明文字重叠*/
+			
+			.lockrow {
+				background-color: #e4e6f7;
+				position: relative;
+				z-index: 2;
+			}
+			
+			.lockcol {
+				background-color: #e4e6f7;
+				position: relative;
+				z-index: 1;
+			}
+			
+			.lockcross {
+				z-index: 3;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div id="ISwrapper">
+
+			<div class="tableCon" style="width: 800px; height: 800px;">
+
+				<table class="table1 IStable">
+
+					<colgroup>
+
+						<col width="200" />
+						<col width="200" />
+						<col width="200" />
+						<col width="200" />
+					</colgroup>
+
+					<thead>
+
+						<tr>
+
+							<th class="lockrow lockcol lockcross">固定头列</th>
+
+							<th class="lockrow">固定头</th>
+
+							<th class="lockrow">固定头</th>
+
+							<th class="lockrow">固定头</th>
+
+							<th class="lockrow">固定头</th>
+						</tr>
+					</thead>
+
+					<tbody>
+
+						<tr>
+
+							<td class="lockcol">固定列</td>
+							<td>内容</td>
+							<td>内容</td>
+							<td>内容</td>
+						</tr>
+
+						<tr>
+
+							<td class="lockcol">固定列</td>
+							<td>内容</td>
+							<td>内容</td>
+							<td>内容</td>
+						</tr>
+
+						<tr>
+
+							<td class="lockcol">固定列</td>
+							<td>内容</td>
+							<td>内容</td>
+							<td>内容</td>
+						</tr>
+
+						<tr>
+
+							<td class="lockcol">固定列</td>
+							<td>内容</td>
+							<td>内容</td>
+							<td>内容</td>
+						</tr>
+
+						<tr>
+
+							<td class="lockcol">固定列</td>
+							<td>内容</td>
+							<td>内容</td>
+							<td>内容</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var myScroll1 = new iScroll("#ISwrapper", {
+				// preventDefault:false,  
+				probeType: 3, //需要使用 iscroll-probe.js 才能生效 probeType ： 1 滚动不繁忙的时候触发 probeType ： 2 滚动时每隔一定时间触发 probeType ： 3   每滚动一像素触发一次  
+				mouseWheel: true, //是否监听鼠标滚轮事件。  
+				scrollX: true,
+				scrollY: true,
+				// momentum: false,  
+				snap: false, //自动分割容器，用于制作走马灯效果等。Options.snap:true// 根据容器尺寸自动分割  
+				//snapSpeed: 400,  
+				scrollbars: false, //是否显示默认滚动条  
+				freeScroll: false, //主要在上下左右滚动都生效时使用，可以向任意方向滚动。  
+				deceleration: 0.0001, //滚动动量减速越大越快，建议不大于 0.01,默认:0.0006  
+				disableMouse: true, //是否关闭鼠标事件探测。如知道运行在哪个平台，可以开启它来加速。  
+				disablePointer: true, //是否关闭指针事件探测。如知道运行在哪个平台，可以开启它来加速。  
+				disableTouch: false, //是否关闭触摸事件探测。如知道运行在哪个平台，可以开启它来加速。  
+				eventPassthrough: false, //使用 IScroll 的横轴滚动时，如想使用系统立轴滚动并在横轴上生效，请开启。  
+				bounce: false //是否启用弹力动画效果，关掉可以加速  
+
+			});
+			myScroll1.on('scroll', updatePosition);
+			myScroll1.on('scrollEnd', updatePosition);
+			myScroll1.on('beforeScrollStart', ISrefresh);
+
+			//IScroll滚动条，上左固定，需要的使用  
+
+			function init_IScroll() {
+
+				var ISwrapper = $("#ISwrapper");
+				myScroll1.scrollTo(0, 0);
+				myScroll1.refresh();
+				ISwrapper.find(".lockrow").css({
+					"top": "0px"
+
+				});
+				ISwrapper.find(".lockcol").css({
+					"left": "0px"
+
+				});
+
+			}
+
+			//刷新IScroll，需要的使用  
+
+			function ISrefresh() {
+				this.refresh()
+
+			}
+			//IScroll 滚动时处理  
+
+			function updatePosition() {
+
+				var ISwrapper = $("#ISwrapper");
+
+				//需要的使用  
+				//  
+				//外层 <span style="font-family: Arial, Helvetica, sans-serif;">.container </span>加个超出滚动overfow：scroll  
+				//外层滚动到一定距离开始滚动  
+				// var parent_container = ISwrapper.parents(".container");  
+				// var baseScTop = 130;  
+				// if (this.directionX == 0 && this.directionY < 0 && this.y >= 0) {  
+				//     parent_container.scrollTop(0);  
+				// } else if (this.directionX == 0 && this.directionY > 0 && this.y <= 0) {  
+				//     parent_container.scrollTop(baseScTop);  
+				// } else if (this.directionX == 0 && this.directionY == 0 && this.y == 0) { //列表少时>container高度，滑动不了  
+				//     if (this.distY > 0) {  
+				//         parent_container.scrollTop(0);  
+				//     } else {  
+				//         parent_container.scrollTop(baseScTop);  
+				//     }  
+				// }  
+
+				ISwrapper.find(".lockrow").css({
+					"top": -1 * this.y + "px"
+
+				});
+				ISwrapper.find(".lockcol").css({
+					"left": -1 * this.x + "px"
+
+				});
+
+			}
+		</script>
+	</body>
+
+</html>

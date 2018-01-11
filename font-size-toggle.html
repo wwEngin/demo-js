@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<meta charset="UTF-8"/>
+<html>
+
+	<head>
+		<title>JavaScript设置网页字体</title>
+		<style>
+			body {
+				font-size: 9pt;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id=zoom>这是一段示例文字，你可以点击下边选择不同字号的字体，这段文字会随即改变大小。脚本之家。</div>
+		<SCRIPT language=JavaScript>
+			function doZoom(size) {
+				document.getElementById('zoom').style.fontSize = size + 'pt'
+			}
+		</SCRIPT>
+		<P align=right>选择字号：[
+			<A href="javascript:doZoom(13)">13pt（超大）</A>
+			<A href="javascript:doZoom(10.5)">10.5pt（中型）</A>
+			<A href="javascript:doZoom(9)">9pt（标准）</A> ]
+	</body>
+
+</html>

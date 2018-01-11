@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="box"></div>
+		<script type="text/javascript">
+			var _box = document.querySelector('.box');
+			var url = 'https://api-cm.zhangtl.com/oxapi2/quote/list';
+			var xhr = new XMLHttpRequest();
+			xhr.open('GET',url,true);
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState == 4 && xhr.status == 200){
+					var data = JSON.parse(xhr.responseText)
+					_box.innerHTML = xhr.responseText;
+					console.log(data)
+				}
+			}
+			xhr.send(null);
+			
+			
+			
+		</script>
+		
+		
+		
+		
+	</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			//选取最小值
+			Array.prototype.min = function() {
+				var min = this[0];
+				this.forEach(function(ele, index, arr) {
+					if(ele < min) {
+						min = ele;
+					}
+				})
+				return min;
+			}
+			var arr = [10, 45, 23, 3, 6, 0.1, 2, 7, 234, 56];
+			arr.min(); // 1
+			console.log('最小值' + arr.min())
+				//选取最大值
+			Array.prototype.max = function() {
+				var max = this[0];
+				this.forEach(function(ele, index, arr) {
+					if(ele > max) {
+						max = ele;
+					}
+				})
+				return max;
+			}
+			var arr = [1, 45, 23, 3, 6, 2, 7, 234, 56];
+			arr.max(); // 234
+			console.log('最大值：' + arr.max())
+
+			var obj = {
+				1: 1,
+				2: 2,
+				3: 3
+			}; // .... 
+			var arr = [];
+			for(var key in obj) {
+				if(!obj.hasOwnProperty(key)) {
+					continue;
+				}
+				var item = {};
+				item[key] = obj[key];
+				arr.push(item);
+			}
+			console.log(arr); // [{a: 1}, {b: 2}, {c: 3}]
+		</script>
+	</body>
+
+</html>

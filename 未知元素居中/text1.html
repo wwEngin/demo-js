@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#box1 {
+				width: 100px;
+				height: 100px;
+				background: #ccc;
+				position: relative;
+			}
+			
+			#box2 {
+				width: 20px;
+				height: 20px;
+				background: #f00;
+				position: absolute;
+				top: 0;
+				/* 四周拉力相同 */
+				right: 0;
+				/* 四周拉力相同 */
+				bottom: 0;
+				/* 四周拉力相同 */
+				left: 0;
+				/* 四周拉力相同 */
+				margin: auto;
+				/* 再设置 marign 自动 */
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box1">
+			<div id="box2"></div>
+		</div>
+	</body>
+
+</html>

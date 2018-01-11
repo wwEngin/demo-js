@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<!--<script type="text/javascript">
+			//随机取得数组中的一个 
+			//			var Arr = ["a", "b", "c", "d"];
+			//			var n = Math.floor(Math.random() * Arr.length + 1) - 1;
+			//			alert(n)
+			//			alert(Arr[n]);
+			function rd(n, m) {    
+				var c = m - n + 1;     
+				return Math.floor(Math.random() * c + n);
+			}
+			var n = 2017-01-01;
+			var m = 2017-02-02;
+			alert(rd(n, m));
+		</script>-->
+		<script>
+			function getDate(datestr) {
+				var temp = datestr.split("-");
+				var date = new Date(temp[0], temp[1], temp[2]);
+				return date;
+			}
+			var start = "2010-3-25";
+			var end = "2012-4-3";
+			var startTime = getDate(start);
+			var endTime = getDate(end);
+			while((endTime.getTime() - startTime.getTime()) >= 0) {
+				var year = startTime.getFullYear();
+				var month = startTime.getMonth().toString().length == 1 ? "0" + startTime.getMonth().toString() : startTime.getMonth();
+				var day = startTime.getDate().toString().length == 1 ? "0" + startTime.getDate() : startTime.getDate();
+				console.log(year + "-" + month + "-" + day);
+				startTime.setDate(startTime.getDate() + 1);
+			}
+		</script>
+	</body>
+
+</html>

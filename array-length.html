@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			function arrCheck(arr) {
+				var newArr = [];
+				for(var i = 0; i < arr.length; i++) {
+					var stock = arr[i];
+					var count = 0;
+					for(var j = 0; j < arr.length; j++) {
+						if(arr[j] == stock) {
+							count++;
+							arr[j] = -1;
+						}
+					}
+					if(stock != -1) {
+						newArr.push({
+							'stock': stock,
+							'count': count
+						})
+					}
+				}
+				return newArr;
+			}
+
+			arrCheck([1, 2, 3, 3, 3, 3, 4]);
+			var newArrs = arrCheck([1, 2, 3, 3, 3, 3, 4]);
+			console.log(newArrs)
+			console.log(newArrs.sort(count_sort))
+			//排序
+			function count_sort(a,b){
+				return b.count - a.count
+			}
+			location.reload()
+		</script>
+	</body>
+
+</html>

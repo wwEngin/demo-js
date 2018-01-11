@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var objectArr = {
+				'name': 'wangwei',
+				'age': 24,
+				'school': 'hnsy'
+			}
+			var arr = [];
+			var firstKey;
+			for(var key in objectArr){
+				if(objectArr.hasOwnProperty(key)){
+					arr.push(key)
+				}
+			}
+			firstKey = arr[0]
+			console.log(firstKey)
+		</script>
+	</body>
+</html>
